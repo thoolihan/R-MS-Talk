@@ -10,6 +10,7 @@ apply(mtcars, 2, class)
 
 View(mtcars) # RStudio
 
+plot(mpg ~ hp, data = mtcars)
 plot(mtcars$hp, mtcars$mpg)
 
 best_fit <- lm(mpg ~ hp, data = mtcars)
