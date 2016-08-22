@@ -1,8 +1,9 @@
 # odds of being a 10x dev 1/1000
-# odds of acing hypothetical dev test 1/220
+# odds of 10x passing hypothetical dev test 19/20
+# odds of non-10x passing hypothetical dev test 1/5
 
 prob <- matrix(c(1 / 1000, 999 / 1000, 
-                  1/220, 219/220),
+                  19/20, 1/5),
                 nrow = 2, ncol = 2)
 
 rownames(prob) <- c('positive', 'negative')
@@ -22,5 +23,5 @@ View(prob)
 answer <- prob['positive', 'combined'] / sum(prob[, 'combined'])
 answer
 
-# what are the odds it's not a 10 dev?
+# what are the odds it's not a 10x dev?
 1 - answer
