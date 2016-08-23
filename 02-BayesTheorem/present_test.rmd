@@ -1,0 +1,38 @@
+---
+title: "Report on Developer Test Effectiveness"
+output: html_document
+---
+
+# Background
+* The odds of being a 10x dev are 1/1000
+* The odds of 10x passing hypothetical dev test 19/20
+* The odds of non-10x passing hypothetical dev test 1/5
+
+## Probability Table
+*this time, we show source*
+```{r}
+source('dev_test.R')
+prob
+```
+
+## Results
+You can also do inline calculations...
+
+Given a positive exam result, the odds that the candidate is a 10x dev is `r answer` (`r answer * 100`%, or slighly < 1%).
+
+## Plot
+```{r, echo = FALSE}
+prob <- prob[,c(1,4)]
+pf <- data.frame(time = c('any candidate', 'w/passing test'), 
+                 positive = prob[1,],
+                 negative = prob[2,])
+
+library(ggplot2)
+g = qplot(time, positive, 
+          data = pf, color = '10x', geom = 'point') + 
+  ylim(c(0,1)) + 
+  geom_point(aes(time, negative, color = 'non 10x')) 
+g
+
+````
+
